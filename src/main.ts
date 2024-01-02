@@ -1,7 +1,10 @@
 import Phaser, { Game } from 'phaser'
 
 // import HelloWorldScene from './HelloWorldScene'
-import MyGame from './mygame'
+import Preloader from './scenes/preloader'
+import LupinStory from './scenes/lupinstory'
+// import HelloWorldScene from './scenes/game'
+
 const config: Phaser.Types.Core.GameConfig = {
 	type: Phaser.AUTO,
 	parent: 'app',
@@ -14,7 +17,7 @@ const config: Phaser.Types.Core.GameConfig = {
 			debug:true
 		},
 	},
-	scene: [MyGame],
+	scene: [Preloader, LupinStory],
 }
 
 export default new Phaser.Game(config)

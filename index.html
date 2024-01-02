@@ -4,12 +4,56 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>My Phaser 3 Game</title>
+	<title>LupinStory</title>
+
+	<link rel="stylesheet" href="https://unpkg.com/xp.css" />
+
+	<style>
+		html, body {
+		 height: 100%;
+		}
+	
+		body {
+			background-color: black;
+			background-image: url(wxp2.png);                    
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center center; 
+			margin:auto;
+		}
+	
+		.window {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		#app {
+			margin: 0;
+			padding: 0;
+		}
+		
+	</style>
 </head>
 
 <body>
-	<div id="app"></div>
-	<script type="module" src="src/main.ts"></script>
+	<div class="window" style="width: 820px">
+		<div class="title-bar">
+		  <div class="title-bar-text">LupinStory 1.0</div>
+		  <div class="title-bar-controls">
+			<button aria-label="Minimize"></button>
+			<button aria-label="Maximize"></button>
+			<button aria-label="Close"></button>
+		  </div>
+		</div>
+		<div class="window-body">
+			<div id="app"></div>
+
+			<script type="module" src="src/main.ts"></script>
+		</div>
+	  </div>
+
+	
 </body>
 
 </html>
