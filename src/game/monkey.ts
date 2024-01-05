@@ -3,15 +3,27 @@ import TextureKeys from '../const/texturekeys';
 import AnimationKeys from '../const/animationkeys';
 
 export default class Monkey extends Phaser.Physics.Arcade.Sprite {
-    private health!: number;
-    private counter!: number;
-    private action!: number;
+    public health!: number;
+    public counter!: number;
+    public action!: number;
     public alive!: boolean;
+    public hit!: boolean;
+    private stunTime!: number;
     private timeLastAction!: number
+
+    // sounds
+	private attack_sfx!: Phaser.Sound.BaseSound;
+    public hit_sfx!: Phaser.Sound.BaseSound;
+	public die_sfx!: Phaser.Sound.BaseSound;
 
 
 	constructor(scene: Phaser.Scene, x:number, y:number, texture:string) {
 		super(scene, x, y, texture)
+
+        //add sound
+		this.attack_sfx = scene.sound.add('lupin_attack');
+        this.hit_sfx = scene.sound.add('lupin_hit');
+    	this.die_sfx = scene.sound.add('lupin_die');
 
         // init values
         this.health = 100
@@ -19,6 +31,7 @@ export default class Monkey extends Phaser.Physics.Arcade.Sprite {
         this.action = Phaser.Math.Between(0, 2)
         this.alive = true
         this.timeLastAction = 0
+        
 	}
 
 	preload() {
@@ -31,7 +44,7 @@ export default class Monkey extends Phaser.Physics.Arcade.Sprite {
 
     preUpdate(time: number, delta: number): void {
         super.preUpdate(time, delta)
-
+        
         if (this.alive === false) {
             this.setVelocityX(0);
             this.anims.play(AnimationKeys.LupinDie, true);
@@ -52,7 +65,11 @@ export default class Monkey extends Phaser.Physics.Arcade.Sprite {
             this.setVelocityX(-100);
             this.flipX = false; // Reset the flip to its default state
             this.anims.play(AnimationKeys.LupinRun, true);
-        } else {
+        } else if (this.action === 4) {
+            this.setVelocityX(0);
+            this.anims.play(AnimationKeys.LupinHurt, true);
+        } 
+        else {
             this.setVelocityX(0);
             this.anims.play(AnimationKeys.LupinIdle, true);
         }

@@ -13,11 +13,22 @@ export default class Preloader extends Phaser.Scene {
         this.load.atlas(TextureKeys.Lupin, "../../public/assets/lupin2.png", "../public/assets/lupin2.json");
 
 
-		this.load.image(TextureKeys.Background, '../../public/assets/assets2/sky.png');
-		this.load.image(TextureKeys.Ground, '../../public/assets/assets2/platform.png');
-		this.load.image(TextureKeys.Star, '../../public/assets/assets2/star.png');
-		this.load.image(TextureKeys.Bomb, '../../public/assets/assets2/bomb.png');
+		this.load.image(TextureKeys.Background, '../../public/assets/sky.png');
+		this.load.image(TextureKeys.Ground, '../../public/assets/platform.png');
+		this.load.image(TextureKeys.Star, '../../public/assets/star.png');
+		this.load.image(TextureKeys.Bomb, '../../public/assets/bomb.png');
+
+		// load sounds
+		this.load.audio("lupin_attack", ['../../public/assets/lupin_attack.mp3']);
+		this.load.audio("lupin_die", ['../../public/assets/lupin_die.mp3']);
+		this.load.audio("lupin_hit", ['../../public/assets/lupin_hit.mp3']);
 		
+		// load map
+		// load the PNG file
+		this.load.image('base_tiles', '../../public/assets/tilemap.png')
+
+		// load the JSON file
+		this.load.tilemapTiledJSON('tilemap', '../../public/assets/monkeymap.json')
 	}
 
 	create() {
@@ -63,5 +74,6 @@ export default class Preloader extends Phaser.Scene {
 			frameRate: 10,
 			repeat: 0
 		});
+
 	}
 }
