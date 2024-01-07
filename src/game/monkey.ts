@@ -21,9 +21,9 @@ export default class Monkey extends Phaser.Physics.Arcade.Sprite {
 		super(scene, x, y, texture)
 
         //add sound
-		this.attack_sfx = scene.sound.add('lupin_attack');
-        this.hit_sfx = scene.sound.add('lupin_hit');
-    	this.die_sfx = scene.sound.add('lupin_die');
+		// this.attack_sfx = scene.sound.add('lupin_attack');
+        // this.hit_sfx = scene.sound.add('lupin_hit');
+    	// this.die_sfx = scene.sound.add('lupin_die');
 
         // init values
         this.health = 100

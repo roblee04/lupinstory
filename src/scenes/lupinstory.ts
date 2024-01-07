@@ -26,9 +26,9 @@ export default class LupinStory extends Phaser.Scene {
 
 	create() {
 		// create sounds
-		this.attack = this.sound.add('lupin_attack', { loop: false, volume: 0.5 });
-    	this.hit = this.sound.add('lupin_hit', { loop: false, volume: 0.5 });
-		this.die = this.sound.add('lupin_die', { loop: false, volume: 0.5 });
+		// this.attack = this.sound.add('lupin_attack', { loop: false, volume: 0.5 });
+    	// this.hit = this.sound.add('lupin_hit', { loop: false, volume: 0.5 });
+		// this.die = this.sound.add('lupin_die', { loop: false, volume: 0.5 });
 
 		// background
 		this.add.image(400, 300, TextureKeys.Background);
@@ -146,16 +146,16 @@ export default class LupinStory extends Phaser.Scene {
 		// Handle collision logic
 		// You can add health reduction, player damage, etc.
 		const enemy = e as Monkey
-		if(this.player.hit > 100) {
-			this.player.health -= 5
-			enemy.hit_sfx.play();
-			if(enemy.body.position.x > p.body.position.x) { // left
-				p.body.position.x = p.body.position.x - 50
-			} else { // right
-				p.body.position.x = p.body.position.x + 50
-			}
-			this.player.hit = 0
-		} 
+		// if(this.player.hit > 100) {
+		// 	this.player.health -= 5
+		// 	enemy.hit_sfx.play();
+		// 	if(enemy.body.position.x > p.body.position.x) { // left
+		// 		p.body.position.x = p.body.position.x - 50
+		// 	} else { // right
+		// 		p.body.position.x = p.body.position.x + 50
+		// 	}
+		// 	this.player.hit = 0
+		// } 
 		
 	}
 	handleProjEnemyCollision(this: Phaser.Scene, pg : Phaser.GameObjects.GameObject, e : Phaser.GameObjects.GameObject) {
@@ -167,10 +167,10 @@ export default class LupinStory extends Phaser.Scene {
 		}
 
 		enemy.health -= proj.damage
-		enemy.hit_sfx.play();
+		// enemy.hit_sfx.play();
 
 		// dmg number
-		this.displayDamageNumber(enemy.x, enemy.y, proj.damage);
+		// this.displayDamageNumber(enemy.x, enemy.y, proj.damage);
 
 		// simulate knockback
 		if(proj.body.velocity.x > 0) { // left
@@ -180,7 +180,7 @@ export default class LupinStory extends Phaser.Scene {
 		}
 
 		if(enemy.health <= 0) {
-			enemy.die_sfx.play()
+			// enemy.die_sfx.play()
 			enemy.alive = false;
 			enemy.body.enable = false;
 			this.tweens.add({
@@ -192,7 +192,8 @@ export default class LupinStory extends Phaser.Scene {
 				// this.enemyGroup.killAndHide(enemy) 
 				enemy.destroy();
 				// enemy.disableBody(true, true);
-				this.player.exp += 5
+
+				// this.player.exp += 5
 			}
 		});
 		} else {

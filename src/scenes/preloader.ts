@@ -3,32 +3,55 @@ import TextureKeys from '../const/texturekeys'
 import SceneKeys from '../const/scenekeys'
 import AnimationKeys from '../const/animationkeys'
 
+// import static assets from public, vite build
+import banana_spritesheet from "../../public/assets/lupin.png"
+import lupin_spritesheet from "../../public/assets/lupin2.png"
+
+// jsons
+import banana_json from "../../public/assets/lupin.json"
+import lupin_json from "../../public/assets/lupin2.json"
+
+// etc assets
+import bg from '../../public/assets/sky.png'
+import ground from '../../public/assets/platform.png'
+// import star from '../../public/assets/star.png'
+// import bomb from '../../public/assets/bomb.png'
+
+//sfx assets
+// import attack_sfx from '../../public/assets/lupin_attack.mp3'
+// import die_sfx from '../../public/assets/lupin_die.mp3'
+// import hit_sfx from '../../public/assets/lupin_hit.mp3'
+
+// map
+import basetiles_png from '../../public/assets/tilemap.png'
+import map_json from '../../public/assets/monkeymap.json'
+
 export default class Preloader extends Phaser.Scene {
 	constructor() {
 		super(SceneKeys.Preloader)
 	}
 
 	preload() {
-		this.load.atlas("banana", "../../public/assets/lupin.png", "../public/assets/lupin.json");
-        this.load.atlas(TextureKeys.Lupin, "../../public/assets/lupin2.png", "../public/assets/lupin2.json");
+		this.load.atlas("banana", banana_spritesheet, banana_json);
+        this.load.atlas(TextureKeys.Lupin, lupin_spritesheet, lupin_json);
 
 
-		this.load.image(TextureKeys.Background, '../../public/assets/sky.png');
-		this.load.image(TextureKeys.Ground, '../../public/assets/platform.png');
-		this.load.image(TextureKeys.Star, '../../public/assets/star.png');
-		this.load.image(TextureKeys.Bomb, '../../public/assets/bomb.png');
+		this.load.image(TextureKeys.Background, bg);
+		this.load.image(TextureKeys.Ground, ground);
+		// this.load.image(TextureKeys.Star, star);
+		// this.load.image(TextureKeys.Bomb, bomb);
 
 		// load sounds
-		this.load.audio("lupin_attack", ['../../public/assets/lupin_attack.mp3']);
-		this.load.audio("lupin_die", ['../../public/assets/lupin_die.mp3']);
-		this.load.audio("lupin_hit", ['../../public/assets/lupin_hit.mp3']);
+		// this.load.audio("lupin_attack", [attack_sfx]);
+		// this.load.audio("lupin_die", [die_sfx]);
+		// this.load.audio("lupin_hit", [hit_sfx]);
 		
 		// load map
 		// load the PNG file
-		this.load.image('base_tiles', '../../public/assets/tilemap.png')
+		this.load.image('base_tiles', basetiles_png)
 
 		// load the JSON file
-		this.load.tilemapTiledJSON('tilemap', '../../public/assets/monkeymap.json')
+		this.load.tilemapTiledJSON('tilemap', map_json)
 	}
 
 	create() {

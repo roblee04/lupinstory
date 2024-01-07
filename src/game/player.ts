@@ -66,8 +66,8 @@ export default class Player extends Phaser.GameObjects.Container {
 		this.direction = 0;
 
 		//add sound
-		this.attack = scene.sound.add('lupin_attack');
-    	this.die = scene.sound.add('lupin_die');
+		// this.attack = scene.sound.add('lupin_attack');
+    	// this.die = scene.sound.add('lupin_die');
 
 		// init projectiles
 		this.projectileGroup = scene.physics.add.group({
@@ -102,7 +102,7 @@ export default class Player extends Phaser.GameObjects.Container {
 			if(this.scene.time.now - this.timeLastAttack > this.attackSpeed) {
 				this.mana -= 3
 				// play sound
-				this.attack.play();
+				// this.attack.play();
 				this.lupin.anims.play(AnimationKeys.LupinAttack);
 				this.doingAction = true;
 				this.timeLastAttack = this.scene.time.now
